@@ -1,7 +1,22 @@
 <div ng-app="app">
   <div ng-controller="tasksCtrl">
-      <h3>{{task1}}</h3>
-      <h3>{{task2}}</h3>
-      <h3>{{task3}}</h3>
+
+  <h1>Your Tasks to Be Done</h1>
+  <h2>{{activeTasksNum()}} tasks remaining<h2>
+
+      <ul>
+        <li ng-repeat="task in displayTasks" ng-click="toggleTask(task)" ng-class="task.clicked ? 'strikethrough' : 'basic'">{{task.name}} <input ng-model="task.name"></li>
+      </ul>
+
+  <h1>Create a new task</h1>
+  <input ng-model="newTask">
+  <button ng-click="addTask(newTask)">Add a Task</button>
+
+  <h6>
+    <button ng-click="allTasks(tasks)">All tasks</button> 
+    <button ng-click="activeTasks(tasks)">Active tasks</button> 
+    <button ng-click="inactiveTasks()">Completed tasks</button>
+    <button ng-click="clearInactiveTasks()">Clear completed task</button>
+  </h6>
   </div>
 </div>
